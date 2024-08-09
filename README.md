@@ -1,6 +1,6 @@
 # Becoming a Software Architect
 
-![Project Screenshot](/imageofsw)
+![Project Screenshot](imageofsw.jpg)
 
 ## Background
 
