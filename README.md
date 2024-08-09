@@ -1,6 +1,6 @@
 # Becoming a Software Architect
 
-![Project Screenshot](imageofsw.jpg)
+![Project Screenshot](360_F_601171827_GwbDHEuhisbGFXRfIpXFhtf7wAvsbLut.jpg)
 
 ## Background
 
