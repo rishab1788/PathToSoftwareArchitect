@@ -16,14 +16,14 @@
 
 ## Agenda
 
-1. **Welcome Section** 👋
-2. **What is a Software Architect** 🤔
-3. **The Architect's Mindset** 🧠
-4. **The Architecture Process** 🔄
-5. **Working with System Requirements** 📋
-6. **Types of Applications** 📱💻
-7. **Selecting Technology Stack** 🛠️
-8. **Meet the Capabilities** 🛠️
+0. **Welcome Section** 👋
+1. **What is a Software Architect** 🤔
+2. **The Architect's Mindset** 🧠
+3. **The Architecture Process** 🔄
+4. **Working with System Requirements** 📋
+5. **Types of Applications** 📱💻
+6. **Selecting Technology Stack** 🛠️
+7. **Meet the Capabilities** 🛠️
     - **Components** 🔲
     - **Design Patterns** 🔍
     - **System Architecture** 🏛️
