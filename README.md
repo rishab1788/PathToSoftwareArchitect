@@ -1,5 +1,7 @@
 # Becoming a Software Architect
 
+![Project Screenshot](/imageofsw)
+
 ## Background
 
 - **Development Experience**: 3+ years 💻
