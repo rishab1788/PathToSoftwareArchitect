@@ -1,0 +1,27 @@
+How to spot a performance problems ? 
+-> Every performance problems is the result of some queue building somewhere
+    * Network Socket queue, DB IO queue, OS run queue etc.
+
+Resons for queue build-up 
+* Inefficient slow processing
+* Serial resource access
+* Limited resource capcity 
+
+Performance Principles 
+* Efficiency 
+  - Efficient Resource Utilization
+    - IO Memory network Disk
+    - CPU
+  - Efficient Logic 
+    - Algorithms
+    - Db queries
+  - Efficient Data Storage
+    - Data strcuture
+    - DB Scehma
+  - Caching
+* Concurrency 
+  - Hardware
+  - Software 
+    - Queuing 
+    - Coherence
+* Capcity
