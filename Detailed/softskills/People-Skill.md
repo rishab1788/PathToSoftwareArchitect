@@ -1,44 +1,104 @@
-Persuader - how do you get some here your advise 
-            you need persuation 
-            Learn to become positive impact
 
+# Persuader 🗣️
 
-Bust the three myths
+- **How do you get someone to take your advice?**  
+- You need persuasion.  
+- Learn to have a positive impact. 🌟
 
-you need to take action 
-Myths - 
-1. Make Them wrong (You know what you are right, )
-2. Be Understood - one transmitting message to other. get what they are saying
-3. Give Them Reasons - you will look better feel better, if you go to gym,
+## Bust the Three Myths 💥
 
-How to master the Myths todays -
-    1. I agree & you are right.
-    2. stop making judgements, tell me more
-    3. ask questions to get their reasons for doing somethings
+To become an effective persuader, you need to take action. Here are three common myths:
 
+### Myths:
+1. **Make Them Wrong**: (e.g., "You know what? You’re right.")
+2. **Be Understood**: Focus on transmitting your message, but forget to truly understand what they’re saying.
+3. **Give Them Reasons**: (e.g., "You’ll look better and feel better if you go to the gym.")
 
-7 Personaility Traits - few sucecede permantently because they do 
-  1. Care - Abrahm's lincon - is it what you care? how much you care, Goodwill find three things to appriciate about them, like people more 
-  2. Condition - two completly different people, develop a ritual at the best, get best in feeling, start your day
-  3. Certainity - unsure what to do, everybody pays attentions, unreasonable, be certain.
-                  practise before you each, mirror technique magic of belife.
-                  mirror - tell in belive, daily mirror technique whatever it takes,     
-                  visualization - see high point of view convertation, 
-  4. Calm - Foucing in breathing, and cops have you been drinking, rope tug of war, retain your power,
-            Realising deeply, you dont need anything from anyone.
-            negotiator avoid showing need never need this deal, a substitute word         
-            Slow down your speed of talk. meditation 
-  5. Contagion - Two people talk it gets synchronization, motion is contagious,
-                  very good, speakers feeling gets in purest form.
-                 Express Sing, move the body dancing.
-                  
-  6. Consistency - your word is your value, consistency solid trust with people, without exception
-                   1. Commit yourself to consistency(what you say what you do, )
-                   2. Decision-making is easy when the value is clear.
-  7. Clarity - you must strip the message its core, its most critical reading out ideas.
-               people don't care about, how is your day?-  how is your relationship? - get to the point.
-                "The Points is ........... we are dealing with this "
-     
+### How to Master These Myths Today:
+1. **Agree and Acknowledge**: "I agree, and you’re right." 👍
+2. **Stop Making Judgments**: Instead, say, "Tell me more." 🗨️
+3. **Ask Questions**: Discover their reasons for doing something. ❓
 
-How to master 7 personaility Traits today 
- Fill in the cheat sheet, develop one c.
+# 7 Personality Traits – Why a Few Succeed Permanently 🏆
+
+1. **Care** 💖:  
+   - Example: Abraham Lincoln.  
+   - Ask yourself, "What do you care about, and how much do you care?"  
+   - Cultivate goodwill by finding three things to appreciate about others. The more you genuinely like people, the more they respond positively.
+
+2. **Condition** ⚙️:  
+   - Different people achieve success through different rituals.  
+   - Develop a routine that brings out the best in you. Start your day with activities that put you in the right mindset.
+
+3. **Certainty** 💪:  
+   - When unsure, remember that confidence commands attention. Be unreasonably certain.
+   - Practice before you act—use the mirror technique from "The Magic of Believing."  
+   - **Daily Mirror Technique**: Look in the mirror and affirm your beliefs. Visualize high points in conversations to reinforce your conviction.
+
+4. **Calm** 🧘:  
+   - Focus on breathing to maintain composure.  
+   - Avoid showing neediness; retain your power by realizing you don’t need anything from anyone.  
+   - A good negotiator never shows desperation. Slow down your speech, and consider meditation to stay grounded.
+
+5. **Contagion** 🔄:  
+   - Emotions are contagious. When two people talk, they naturally synchronize.  
+   - Great speakers transmit their feelings in the purest form. Express yourself—sing, move, dance.
+
+6. **Consistency** 🔒:  
+   - Your word is your bond. Consistency builds solid trust with others, without exception.  
+   - **Commit to consistency**: Align your actions with your words.  
+   - Decision-making becomes easier when your values are clear.
+
+7. **Clarity** 🔍:  
+   - Strip your message down to its core. Focus on what’s most critical, filtering out unnecessary details.  
+   - People don’t care about superficial matters—get straight to the point. For example, say, "The point is… we are dealing with this."
+
+# How to Master the 7 Personality Traits Today 🎯
+
+Fill in the cheat sheet to develop one characteristic at a time.
+
+## Pre-Persuasion Checklist ✔️
+
+### NOOD - Need, Offer, Obstacles, Delivery 🚀
+
+**Use this Cheat Sheet:**
+- Understand persuasion myths, identify bad persuasion habits, and know which tools to use.
+
+**First: The Magic Persuasion Tool** 🪄
+
+1. **Questions** ❓:  
+   - Think about walking on a beach—how do you get the ball over the net? Use your head, chest, and feet.  
+   - Are you giving advice or telling people what to do?  
+   - Bust the 3 myths.  
+   - Ask questions to gain agreement; the more you ask, the more they agree.
+
+2. **Stories** 📖:  
+   - Learn how to tell stories with the strongest structure for storytelling.  
+   - Understand why stories are so powerful.  
+   - Share a story that leads to an "aha" moment.
+
+3. **Metaphors** 🔄:  
+   - Use metaphors effectively (e.g., "He’s a couch potato").  
+   - Know what questions to ask to evoke the right metaphor.
+
+### 10 Questions to Ask 📝
+
+1. What are this person’s emotional wants and pain points?  
+2. What specific next step can help them avoid pain and gain pleasure?  
+3. What do they need to feel right now to take action?  
+4. What do they need to believe to move forward?  
+
+**Offer Questions** 💼:  
+5. What is the specific offer?  
+6. Can I add value to the offer?
+
+**Obstacles Questions** 🚧:  
+7. What are the potential disadvantages or likely objections (e.g., "The product is really expensive," or "My boss will be mad if I take leave")?  
+8. What other options do they have, and why should they choose you?
+
+**Delivery Questions** 📦:  
+9. What do I want them to do?  
+10. How can I use the tools in my toolbox to get them to do this?  
+
+---
+
