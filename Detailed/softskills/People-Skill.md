@@ -102,3 +102,46 @@ Fill in the cheat sheet to develop one characteristic at a time.
 
 ---
 
+# 🌟 12 Pieces of Persuasion
+
+### Stage 1: Setting the Stage
+1. **🚜 Forklift or Observe**
+   - **Objective:** Meet the person where they are emotionally.
+   - **Example:**
+     - If your daughter is sad, match her emotions with empathy, not just her actions.
+     - Acknowledge the obvious: "I know we don't meet as often, but..."
+
+2. **🎯 Intention + Permission**
+   - **Objective:** Clearly state your purpose and ask for their willingness to engage.
+   - **Examples:**
+     - "I wanted to have a conversation with you about X."
+     - "I noticed we haven't talked much lately. You mentioned [specific detail]."
+     - "Hey, you told me you'd take care of this by Monday. It's important to me that we follow through for each other. Can we discuss how to make that happen together?"
+
+3. **🔍 Understand Their Situation**
+   - **Objective:** Get a sense of what’s on their mind.
+   - **Questions to ask:**
+     - "What’s going on in your relationship?"
+     - "How are things on your end?"
+
+4. **🤝 Relate**
+   - **Objective:** Connect with them on a personal level.
+   - **Approach:**
+     - Ask, "What’s going on?" and listen actively.
+     - Respond with empathy: "Wow, that sounds really intense. I’d love to understand more."
+
+### Stage 2: Negative
+5. **😣 Feel Their Pain**
+   - **Objective:** Understand what’s bothering them.
+   - **Examples:**
+     - "If someone says, ‘Hey, if you do this, you’ll win $20,’ it’s less motivating than, ‘If you don’t do this, you’ll lose $20.’"
+     - "Is it difficult to manage this with your current system? Do you face challenges with X? Are you satisfied with Y?"
+
+6. **📈 Amplify the Pain**
+   - **Objective:** Highlight the consequences of not addressing the issue.
+   - **Questions to consider:**
+     - "What would your future look like if this continues?"
+     - "How much production loss could this lead to?"
+     - "Could this situation escalate?"
+
+ 
