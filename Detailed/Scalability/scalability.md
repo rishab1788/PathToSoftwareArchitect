@@ -67,26 +67,66 @@ Example with Load Balancer:
 
 ## 🔑 Scalability Principles
 
-### 🔓 Decentralize
-- Monolith is an anti-pattern for scalability.
-- More workers - instances, threads.
-- Specialized workers - services.
+  ### 🔓 Decentralize
+  - Monolith is an anti-pattern for scalability.
+  - More workers - instances, threads.
+  - Specialized workers - services.
+  
+  ### 🔄 Independence
+  - Multiple workers are as good as a single worker if they can't work independently.
+  - Workers must work concurrently to the maximum extent.
+  - Independence is impeded by:
+    - Shared resources.
+    - Shared mutable data.
+  
+  ### 🧩 Modular Architecture
+  - Start with modular code to achieve scalability.
+  
+  ## 🔁 Replication - Handling Increasing Workloads
+  
+  # 🖥️ Stateless (Service)
+   - **Code replication**.
 
-### 🔄 Independence
-- Multiple workers are as good as a single worker if they can't work independently.
-- Workers must work concurrently to the maximum extent.
-- Independence is impeded by:
-  - Shared resources.
-  - Shared mutable data.
+# 🗄️ Stateful (Mostly DB)
+   - **Code & Data replication**.
 
-### 🧩 Modular Architecture
-- Start with modular code to achieve scalability.
+## 🌐 Web Stateful Replication 
+- When **Low Latency** is required:
+  - 🔄 **Sticky session/session affinity**.
+  - 🧠 **Session occupies memory**.
+  - 🛡️ **Session clustering for reliability**.
 
-## 🔁 Replication - Handling Increasing Workloads
+## 🌐 Web Stateless Replication (Preferred)
+- For the **highest scalability** at the expense of higher latency:
+  - ⚡ We can use **memCache/Redis** which all nodes share, decreasing latency.
+  - 🗃️ **Session data can be stored**:
+    - On the **Client Side** in cookies 🍪.
+    - On the **Server Side** in a **Shared Cache**.
 
-### Stateless (Service)
-- Code replication.
+## 📡 Service Replication
+- **Stateless Replication**: Same as Web Stateless.
+- Use **DB Lock 🔒**.
 
-### Stateful (mostly DB)
-- Code & Data replication.
+# 🛢️ Database Replication
+- Used when **Vertical Scaling** is no longer sufficient.
+- For **High Read Scalability 📈**.
+- For **High Availability 🟢**.
 
+### RDBMS (Relational Database Management System) - 🛠️ General Purpose
+### NoSQL - 🛠️ Specific Use Cases
+
+### RDBMS Scaling
+- When the RDBMS is **overloaded**, we create a **Read Replica** (Master/Slave):
+  - Another DB instance is created. What’s written in the **Master** gets replicated to the **Slave**.
+  - We can create multiple read replicas for handling more read requests.
+
+- **Backup Database**:
+  - Created for a different purpose.
+  - Used when the **Master** goes down, and the **Backup** gets replaced.
+
+## 🔀 Two Ways to Perform Database Replication
+1. **Synchronous Replication**: Data is replicated in real-time.
+2. **Asynchronous Replication**: Data is replicated with a slight delay.
+
+          
+  
