@@ -144,4 +144,39 @@ Fill in the cheat sheet to develop one characteristic at a time.
      - "How much production loss could this lead to?"
      - "Could this situation escalate?"
 
- 
+
+# 🌟 Stage 3: Positive
+
+## 7. Feel Their Desire
+- 💖 Show our appreciation for them.
+- 🎯 Understand what the ideal situation looks like.
+- 💬 Elicit their reasons for change.
+
+## 8. Get Them to Persuade Themselves
+- 🤔 Why might you change?
+- 🧠 The 6-question influence process:
+  1. ❓ Why might you change?
+  2. 🔄 Why did you change or take action?
+  3. 📊 How ready are you to change on a scale of 1-10?
+  4. 🔢 Why didn’t you pick lower numbers?
+  5. 🌈 Imagine you've changed. What would be the positive outcome?
+
+## 9. Show Appreciation
+- 🎖️ Everyone desires to feel important—use this as a positive tool.
+- 🌍 Giving genuine appreciation can have a meaningful impact on the world.
+
+# 🚀 Stage 4: Getting Action
+
+## 10. Easing into a Solution
+- 🛠️ Introduce solutions gently: "Is this something you'd be interested in before I explain how we can help?"
+- 🗣️ Ask, "Do you want me to tell you about it?"
+
+## 11. Make the Offer / Ask for Action
+- 💼 Present your offer clearly: "Here’s what I have to offer and what you need to do to take advantage of it."
+- 📝 Provide a clear proposal or actionable steps.
+
+## 12. Turning a "Yes" into Action
+- ✔️ "Yes" is just the beginning. Ensure a time commitment to move forward.
+- 📅 Set a specific time: "We’ll come by Sunday at noon to swap the old machine for the new one," or "I’ll bring the new juicer by on Thursday at 4:30, and we’ll do it together."
+- 🔐 Secure a final time commitment to ensure action is taken.
+
