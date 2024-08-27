@@ -125,8 +125,43 @@ Example with Load Balancer:
   - Used when the **Master** goes down, and the **Backup** gets replaced.
 
 ## 🔀 Two Ways to Perform Database Replication
-1. **Synchronous Replication**: Data is replicated in real-time.
-2. **Asynchronous Replication**: Data is replicated with a slight delay.
+# Database Replication Strategies
 
-          
+## 1. **Master-Slave (Primary-Secondary) Replication**
+### 🕒 Asynchronous - (Read Replica)
+- **Use Case:** When low latency reads and writes are required.
+- **Characteristics:**
+  - ⚡ Low Latency
+  - 🔄 Eventually Consistent
+  - ⚠️ Potential for Data Loss
+
+### 🔄 Synchronous - (Backup)
+- **Use Case:** When a reliable backup is needed, typically with 4-5 read replicas where 1 backup replica remains in sync.
+- **Characteristics:**
+  - ✅ Consistent Data
+  - 🕑 High Latency Writes
+  - 📉 Low Write Availability (Writes become unavailable if a node is down)
+
+## 2. **Master-Master (Peer-to-Peer) Replication**
+- **Description:** Data is replicated with a slight delay. This method is not very popular but can be useful in global regions, with the understanding that write conflicts and transaction ordering issues may occur.
+- **Characteristics:**
+  - 🏢 Both databases act as masters, allowing reads and writes on both instances.
+  - 🔄 Bidirectional replication between nodes.
+  - ⚠️ Potential for write conflicts due to asynchronous replication.
+  - 🔄 High Availability.
+
+## Need for Specialized Services
+- **Requirement:** Only applicable if we can break our monolithic application into smaller, manageable services.
+- **Challenge:** If all modules remain in one system and only one part of a module needs updating, replicating all modules would increase load and create potential issues.
+
+### Specialized Services (SOAP/REST)
+- 🛠️ **Partially Independent Development and Deployment**
+- 📈 **Independent Scalability**
+- ⚙️ **Independent Technology Choices**
+
+- **Aggregator Service or Gateway Service**: 
+  - Required to help in redirecting traffic to different modules.
   
+- **Interoperation Interface**: 
+  - For inter-module communication, we can use REST, SOAP, gRPC, or Thrift.
+
