@@ -180,3 +180,26 @@ Fill in the cheat sheet to develop one characteristic at a time.
 - 📅 Set a specific time: "We’ll come by Sunday at noon to swap the old machine for the new one," or "I’ll bring the new juicer by on Thursday at 4:30, and we’ll do it together."
 - 🔐 Secure a final time commitment to ensure action is taken.
 
+# 3 Things to weave out 
+- the first one should be obvious by now, but I thought I'd point out again is throughout.
+- You want to keep going back to the tools.
+- verbalize and address the skepticism and objections.
+- communicate non neediness.(Start with no, don't force them )
+# 🎉 What To Do When You're Done
+- 🎊 **Congratulate** them.
+- 📅 **Set the expectation** for what's next.
+- 🎁 **Surprise** them with something extra or a bonus.
+
+# 🧠 How to Influence Yourself or a Group
+- 🤔 **6 Questions to Take Action**:
+  1. What do you want?
+  2. Why do you want it?
+  3. What’s stopping you?
+  4. Who can help you?
+  5. What’s your next step?
+  6. When will you do it?
+
+# ⏩ What To Do Now
+- 🚀 **Move them to action**: Remind them it’s just a head fake, a lesson hidden within the task.
+- 💡 **Bust the myths**: Love is the experience of accepting someone as perfect exactly as they are, not wishing they would change.
+- 📋 **Use the Cheat Sheet**: Devote yourself to it—5 minutes every day for 3 months to review it.
