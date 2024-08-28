@@ -165,3 +165,38 @@ Example with Load Balancer:
 - **Interoperation Interface**: 
   - For inter-module communication, we can use REST, SOAP, gRPC, or Thrift.
 
+- **Where to use async services**: 
+- They are best suited for write-oriented operations where data does not need to be immediately shown to the user.
+- Not ideal for read-heavy request models.
+- They offer flexibility, allowing the system load to be scaled up or down.
+
+- **Asynchronous Processing & Scalability**:
+- Async services require infrastructure designed for average load rather than peak load.
+- By adding a message queue (MQ) for orders and an order processing service that makes actual DB changes at average load, we can avoid overloading the database.
+- This approach removes the need to reject requests during peak times.
+
+- **Benefits**:
+- 🗂️ Reduces over DB capacity.
+- ✅ Ensures that requests don't have to be rejected.
+
+# Caching 🗄️
+
+- **Caching** reduces latency and overall read load:
+- HTTP Cache, Session Cache, Object Cache.
+- While read load can be scalable, scaling write load on a database is more complex.
+- **Cache** helps to reduce read load, while **Asynchronous Services** help to reduce write load.
+
+# Vertical Partitioning (Microservices) 🏗️
+
+- As load increases, both database load and service demands increase. RDBMS cannot be distributed easily.
+- Example: Order Service, Catalog Service, User Service -> Independent services with clear-cut data separation, allowing for separate databases.
+- One database can be refactored into multiple databases (e.g., four DBs). If there are common tables, they must be split.
+- **Separation of responsibilities**: This improves the situation but sacrifices the ACID transaction model.
+
+- **Microservices Architecture**:
+- This architecture is also known as microservices architecture, where each service has its own database.
+- Examples:
+  - 🧑‍💼 [User Service] -> [User DB]
+  - 📦 [Order Service] -> [Order DB]
+  - 📚 [Catalog Service] -> [Catalog DB]
+
