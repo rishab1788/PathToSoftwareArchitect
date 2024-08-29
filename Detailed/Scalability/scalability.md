@@ -200,3 +200,67 @@ Example with Load Balancer:
   - 📦 [Order Service] -> [Order DB]
   - 📚 [Catalog Service] -> [Catalog DB]
 
+# Database Partitioning and Horizontal Scaling 🌐
+
+## Database Partitioning 🗃️
+
+When scaling databases, vertical partitioning has its limits, which is where horizontal partitioning (or sharding) comes in. Horizontal partitioning divides a database into smaller, more manageable pieces. Here are the two common types:
+
+### 1. Range Partitioning 📊
+- **Description**: Data is divided into partitions based on ranges of values.
+- **Example**:
+  - Partition 1: `[1..1000]`
+  - Partition 2: `[1000..2000]`
+  - Partition 3: `[2000..3000]`
+- **Use Case**: Ideal for queries that involve ranges. For example:
+  ```sql
+  SELECT * FROM orders WHERE id > 150 AND id < 250;
+
+
+    where can we use Range Partitioning and Hash Partioning 
+    SQL example - 
+      Select * from order where id = 150
+      Select * from order where id > 150 AND id < 250
+      visit node 1 and node 2
+
+      Select * from order where id = 150. // then use Hash partitioning.
+      
+      Range Partitioning uses tree structure but hash just do it O(1)  
+      
+Routing with Database Partitioning 
+
+GET- 256
+                        [1,100]
+  [Client Library] ---> [100,200]
+                        [200, 300]
+
+## 🗂️ Summary of Horizontal Scaling Methods
+
+1. **Services**: Decomposing the application into smaller, independent services.
+2. **Replication**:
+   - **Stateful**: Replicates both code and data.
+   - **Stateless**: Replicates code only; data is managed separately.
+3. **Partitioning**:
+   - **Vertical/Functionality Partitioning**: Divides based on functionality.
+   - **Database Partitioning**: Uses range or hash partitioning to distribute data.
+4. **Asynchronous Calls**: Handles operations asynchronously to enhance scalability.
+5. **Caching**: Reduces latency and load by storing frequently accessed data in memory.
+
+## 🌐 Dealing with Large Scale Systems
+
+### ⚖️ Load Balancing
+- **Single IP Address**: Assigns a single IP address to each component.
+- **Load Distribution**: Distributes incoming requests across multiple instances to balance the load.
+
+### 🔍 Discovery Service & Load Balancing
+- **Discovery Service**:
+  - **Function**: A registry for tracking healthy instances of services.
+  - **Process**: Services register with the discovery service and periodically send heartbeats to indicate availability.
+  - **Example**: When an `OrderService` instance (`O1` or `O2`) starts, it registers with the discovery service. The service then directs traffic based on load balancing strategies.
+
+  **Discovery Service Details**:
+  - **Registry**: Keeps track of IPs and health statuses of instances.
+  - **Heartbeat**: Services periodically send a heartbeat signal to confirm they are available.
+  - **Load Strategy**: Traffic routing is based on the load balancing strategy defined.
+
+---
