@@ -274,98 +274,97 @@ GET- 256
       RPS - 10 millions
       Reason -> hardware load balncers are high charges.
 
-# Load Balancing and Scaling Strategies
+# ⚖️ Load Balancing and Scaling Strategies
 
-## Software-Based Load Balancers
+## 🖥️ Software-Based Load Balancers
 - **Layer 7 Load Balancers**: Operate at the application layer (L7) of the OSI model.
   - **NGINX**: 
     - **Connections**: 225K 
     - **Throughput**: 70 Gbps
     - **Requests Per Second (RPS)**: 3 million
-    - **Reason for Use**: Cost-effective or free solution.
+    - **Reason for Use**: 💸 Cost-effective or free solution.
   - **Features**:
-    - Reverse Proxy
-    - Content-Based Routing (e.g., routing static resources to different nodes)
-    - Load Balancing Algorithms:
-      - Round Robin
-      - Least Connection
-      - Weighted Round Robin/Least Connection
-      - Least Response Time
+    - 🔄 Reverse Proxy
+    - 📦 Content-Based Routing (e.g., routing static resources to different nodes)
+    - ⚖️ Load Balancing Algorithms:
+      - 🔄 Round Robin
+      - 📉 Least Connection
+      - ⚖️ Weighted Round Robin/Least Connection
+      - ⏱️ Least Response Time
 
-## DNS as a Load Balancer
+## 🌐 DNS as a Load Balancer
 - **Function**: Maps a domain to multiple IP addresses, enabling load distribution across servers.
 - **Drawbacks**:
-  1. **Indefinite Cache**: Some systems might not respect TTLs (Time-To-Live) settings.
+  1. **Indefinite Cache**: 🕒 Some systems might not respect TTLs (Time-To-Live) settings.
   2. **Low/Zero TTLs**: Can place a high load on DNS servers.
 
-## Global Server Load Balancing (GSLB)
+## 🌍 Global Server Load Balancing (GSLB)
 - **Use DNS for Region-Wise Scalability**:
   - **Scalability**:
-    - Routing for multiple geographic regions
-    - System-wide routing optimization
+    - 🌎 Routing for multiple geographic regions
+    - 🛠️ System-wide routing optimization
   - **Performance**:
-    - **Locality Optimization**: Reduces latency by directing users to the nearest data center.
+    - **Locality Optimization**: 🌐 Reduces latency by directing users to the nearest data center.
     - Example:
-      - North American users → North America data center
-      - APAC users → APAC data center
+      - 🇺🇸 North American users → North America data center
+      - 🌏 APAC users → APAC data center
 
 - **Example Workflow**:
-  1. User from North America attempts to access a domain.
-  2. DNS identifies the user's location and returns the IP of the closest data center.
-  3. User is directed to the North America data center for optimal performance.
+  1. 🌍 User from North America attempts to access a domain.
+  2. 🕵️ DNS identifies the user's location and returns the IP of the closest data center.
+  3. 🚀 User is directed to the North America data center for optimal performance.
 
-## Global Data Replication
+## 🔄 Global Data Replication
 - **Objective**: Keep data in sync across geographically distributed data centers.
 - **Use Case**:
-  - Users can connect to any data center (e.g., North America or APAC).
+  - 🌐 Users can connect to any data center (e.g., North America or APAC).
   - **Active-Active Setup**: All sites are active with master-to-master replication.
-    - Primarily asynchronous, which may result in write conflicts.
-    - Example: A user orders a cab in India, flies to North America, and the data should be accessible there without conflicts.
-  - **Caution**: Avoid switching regions hastily to prevent write conflicts.
+    - ⚠️ Primarily asynchronous, which may result in write conflicts.
+    - Example: A user orders a cab in 🇮🇳 India, flies to 🇺🇸 North America, and the data should be accessible there without conflicts.
+  - **Caution**: ⚠️ Avoid switching regions hastily to prevent write conflicts.
   - **Synchronous Replication**: Not feasible due to high latency; some data loss may occur if a node goes down.
 
-## Auto Scaling
+## 🚀 Auto Scaling
 - **Automated Scaling**: 
-  - Automatically detects load increases and boots new instances.
-  - Monitors health check systems.
+  - 🔍 Automatically detects load increases and boots new instances.
+  - 🩺 Monitors health check systems.
   - Once the autoscaler detects high load, it starts a new instance and registers it with load balancers, distributing the load across the new nodes.
-  - Load thresholds can be set to trigger scaling.
+  - 📉 Load thresholds can be set to trigger scaling.
 
-## Microservices Architecture Motivation
+## 🏗️ Microservices Architecture Motivation
 - **Impact on Scalability, Performance, Cost, Deployments, and Development**:
-  1. **Frequent Deployment**: Microservice deployment is fast, allowing incremental changes.
-  2. **Independent Deployment**: Services can be deployed independently.
-  3. **Independent Development**: Teams can develop services independently.
-  4. **Independent Services**: Each service operates independently.
+  1. 🕒 **Frequent Deployment**: Microservice deployment is fast, allowing incremental changes.
+  2. 🔄 **Independent Deployment**: Services can be deployed independently.
+  3. 👨‍💻 **Independent Development**: Teams can develop services independently.
+  4. 🧩 **Independent Services**: Each service operates independently.
   
 - **Service-Oriented Architecture (SOA)**:
   - **Independent**:
     - Each service can have its own technology stack (libraries, frameworks, etc.).
     - Each service can be scaled independently and differently.
   - **Not Independent**:
-    - Common Interface Schema (e.g., XML schema)
-    - Common Database Schema (e.g., RDBMS schema)
+    - 📜 Common Interface Schema (e.g., XML schema)
+    - 🗃️ Common Database Schema (e.g., RDBMS schema)
   
 - **Issues**:
-  - Service development may be independent, but deployment may not be.
-  - A single database can limit scalability.
-  - Changes to the schema may require updates to all services, preventing independent deployment.
-  - Forces the use of a single machine for certain operations.
+  - ⚖️ Service development may be independent, but deployment may not be.
+  - ⚠️ A single database can limit scalability.
+  - ✏️ Changes to the schema may require updates to all services, preventing independent deployment.
+  - 🔄 Forces the use of a single machine for certain operations.
 
-## Microservice Architecture Style
+## 🧩 Microservice Architecture Style
 - **Shared Nothing Architecture**:
-  1. Services are developed and deployed independently.
-  2. Achieved through vertical partitioning.
+  1. 🧱 Services are developed and deployed independently.
+  2. ⚙️ Achieved through vertical partitioning.
   
 - **Vertical/Domain Partitioning**:
-  1. Independent schema/database for each service.
-  2. Loosely coupled service interfaces.
-    - Prefer REST interfaces over XML/WSDL schemas.
-  3. Avoid reusable libraries, except for utilities.
+  1. 🗂️ Independent schema/database for each service.
+  2. 🛠️ Loosely coupled service interfaces.
+    - Prefer 🌐 REST interfaces over XML/WSDL schemas.
+  3. 🚫 Avoid reusable libraries, except for utilities.
 
 - **Issues**:
-  - Duplicate codebase
-  - Transaction failures
-  - Transaction rollbacks
+  - 📜 Duplicate codebase
+  - ⚠️ Transaction failures
+  - 🔄 Transaction rollbacks
 
-              
