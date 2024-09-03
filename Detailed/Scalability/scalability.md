@@ -367,4 +367,79 @@ GET- 256
   - 📜 Duplicate codebase
   - ⚠️ Transaction failures
   - 🔄 Transaction rollbacks
+# Micro-Service Transactions 🛠️
 
+## Transaction Challenges Across Multiple Machines 🌐
+- **Distributed Services with Their Own Databases**: Each microservice has its own database, making local transactions impossible.
+- **Options**:
+  - **Distributed ACID Transactions**:
+    - 2PC/3PC Protocols
+    - Full ACID compliance
+  - **Compensating Transactions**:
+    - **SAGA Pattern** 🌀 (Originated with distributed systems in the 1980s)
+    - **Eventually Consistent Model**:
+      - Relaxes consistency and isolation guarantees
+
+## Compensating Transactions - SAGA Pattern ♻️
+- **Logical Undo**: Reverse a partially committed transaction.
+- **Reversal Flow**:
+  - May not be exactly opposite to the original process
+  - Some steps can be executed in parallel
+- **Failure Handling**:
+  - Compensation can fail and should be restartable and retryable.
+- **Asynchronous Processing**:
+  - Ensures reliability
+  - Provides eventual atomicity despite being eventually consistent
+
+## Micro-Services Communication Models 🗣️
+- **Synchronous Processing**:
+  1. Immediate responses
+  2. Ideal for read/query loads
+- **Asynchronous Processing**:
+  1. Deferred responses
+  2. Ideal for write/transaction loads
+  3. Higher scalability
+  4. Higher reliability
+
+## Event-Driven Transactions 🚀
+- **Event Flow**:
+  - Order Request ➡️ [Order Orchestrator] ➡️ [Create Order Event] ➡️ [Service] ➡️ [DB]
+  - Shipment Created Event ➡️ [Service] ➡️ [DB]
+  - Reserve Inventory Event ➡️ [Service] ➡️ [DB]
+
+- **SAGA as a State Machine**: Implement SAGA pattern in an event-driven transaction framework.
+
+## Extreme Scalability with NoSQL & Kafka 📊
+
+- **Microservices Transaction Models**:
+  - **ACID** within a service
+  - **Compensating Transactions** across services:
+    - **Eventually Consistent**
+
+- **NoSQL Databases**:
+  - Allow eventual consistent transactions
+  - Single table for all data to maximize scalability
+  - **High Scalability**:
+    - Horizontal partitioning
+
+- **Kafka**:
+  - Horizontal partitioning of topics
+
+## Summary 📝
+- **Scalable Systems**:
+  - Decentralized and independent components
+- **Key Strategies for Scalability**:
+  - **Cache**: Frequently read and rarely updated data to reduce backend load
+  - **Asynchronous/Event-Driven Processing**: Distribute load over time
+  - **Vertical Partitioning**: Independent, stateless, replicated services
+  - **Partitioning and Replication of State**: Essential for extreme scalability
+
+- **Infrastructure for Scalable Systems**:
+  - **Load Balancers**:
+    - Hardware-based (L4 + L7)
+    - Software-based (L7)
+  - **Discovery Services**: For service discovery and health checks
+  - **DNS as Global Load Balancers**
+  - **Microservices**:
+    - Fully vertically partitioned services and databases
+    - Leads to eventual consistency
