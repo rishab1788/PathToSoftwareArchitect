@@ -215,3 +215,121 @@ Data centers themselves can be vulnerable to failures due to natural disasters, 
 
  
  
+
+# 🛠️ Fault Tolerant Design
+
+In a distributed system, achieving fault tolerance is crucial to ensure the system continues to operate correctly even when partial failures occur. Let’s break down how fault detection, monitoring, and health checks are applied.
+
+---
+
+## 🔍 Fault Detection
+
+Fault detection is about identifying when a component of the system is not functioning as expected. It is done by continuously monitoring the system's health and behavior.
+
+---
+
+## 📉 Fault Models
+
+Understanding different types of failures helps in designing effective fault-tolerant systems.
+
+1. **Response Failure**: 
+   - A server fails to receive or respond to incoming messages.
+   - 🛑 **Symptom**: No response.
+
+2. **Timeout Failure**: 
+   - A server’s response takes longer than the expected timeout duration.
+   - ⏳ **Symptom**: Response delay beyond allowed time.
+
+3. **Incorrect Response Failure**:
+   - A server responds with an incorrect result.
+   - ⚠️ **Symptom**: Incorrect data returned.
+
+4. **Crash Failure**:
+   - The server stops functioning entirely after working correctly for a period.
+   - 💥 **Symptom**: Complete halt of the service.
+
+5. **Arbitrary Response Failure** (also called Byzantine failure):
+   - A server’s response is incorrect due to compromised security or internal faults.
+   - 🚨 **Symptom**: Malicious or faulty data returned.
+
+---
+
+## 📊 Health Checks
+
+**Health checks** are essential tools for monitoring the status and functionality of system components. They can detect failures and initiate recovery mechanisms.
+
+### 🔧 External Monitoring Service
+
+- **Monitoring Service** constantly "pings" your servers:
+  - 🏓 **Ping**: Sending periodic checks to confirm the system’s availability.
+  - 🛡️ **Goal**: Ensure services are reachable and functioning properly.
+
+### 💓 Internal Cluster Monitoring
+
+- **Heartbeats**: Periodic signals exchanged between nodes in a redundancy cluster to ensure they're functioning properly.
+  - Useful for **stateful** and **clustered** components to detect partial or complete failures.
+
+---
+
+## 🚨 External Monitoring Service
+
+An external health check service monitors the system and responds accordingly:
+
+### 🛎️ Health Check Service Generates:
+
+1. **Alerts**: 
+   - 🛠️ Used to notify administrators or systems of issues that need recovery.
+   
+2. **Events**:
+   - 📈 Triggered to handle system scaling based on monitored performance.
+   
+### 🚥 Application Health Checks
+
+Health checks monitor different parameters of a service:
+
+1. **HTTP Response**: 
+   - 🖥️ Ensures that web services are responding correctly.
+   
+2. **TCP Response**: 
+   - 🔌 Monitors server connectivity through established protocols.
+
+### ⏱️ Periodic Health Checks
+
+Performed regularly to keep track of the system's health:
+
+- **Response Code**: Expected HTTP status codes (e.g., 200 OK).
+- **Response Time**: Monitor latency and ensure it is within acceptable limits.
+- **Number of Retries**: 
+  - If multiple retries are needed to get a response, it could be a sign of service degradation.
+  - ⚠️ Status: **UP** (service running smoothly) or **DOWN** (service unavailable).
+
+**Public Cloud** makes it easy to implement periodic health checks.
+
+---
+
+## 🧐 What Happens if the Monitoring Service Fails?
+
+When the **monitoring service** itself is down, it poses a significant challenge. One solution is to have a **Health Check Service** to monitor the monitoring service itself!
+
+---
+
+## 🤝 Inter-Cluster Monitoring
+
+- **Heartbeat Exchange**: Periodic heartbeats are exchanged between nodes in a redundancy cluster to ensure all nodes are functioning.
+- **Communication Protocols** are necessary for recovering from failures.
+- **Useful for Stateful Components**: 
+  - In **stateful** systems, the cluster needs to coordinate closely for fault detection and recovery.
+
+---
+
+## 🚦 Fault Detection Monitoring Techniques
+
+1. **Health Checks**:
+   - Commonly used in stateless services.
+   - 🎯 Focus: Check service health at predefined intervals.
+
+2. **Heartbeat Monitoring**:
+   - Used in cluster-based systems where nodes monitor each other.
+   - 💓 Focus: Ensure that nodes remain active and synchronize state.
+
+      
