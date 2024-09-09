@@ -332,4 +332,33 @@ When the **monitoring service** itself is down, it poses a significant challenge
    - Used in cluster-based systems where nodes monitor each other.
    - 💓 Focus: Ensure that nodes remain active and synchronize state.
 
+
+
+Stateless Recovery - 
+
+Can use existing scalability mechanism for recovery 
+Hot standby 
+  * Have active redundant instances up and running.
+Warm standby
+  * Bring up new instances as and when needed.
+  * Terminate unhealthy instances if not dead already.
+  * Launch a new instance.
+
+    [Load Balancer ] ----> 1,2,3, ---> Monitoring and Health check () --> autoscaler -> VM container/image.
+
+Stateful failover
+
+    Virtual IP                   
+  client-> DNS(10.2.2.2)
+      floatingIP
+            |
+ primary -HeartBeat-   standby
+(192.1.1.1) (192.2.2.2)
+
+Registry/Router/DNS
+      Client --> Registery --> Instance 2
+       |         
+    instance1
+
+ 
       
