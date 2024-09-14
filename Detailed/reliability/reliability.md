@@ -334,15 +334,19 @@ When the **monitoring service** itself is down, it poses a significant challenge
 
 
 
-Stateless Recovery - 
+# ⚡ Stateless and Stateful Recovery Mechanisms
 
-Can use existing scalability mechanism for recovery 
-Hot standby 
-  * Have active redundant instances up and running.
-Warm standby
-  * Bring up new instances as and when needed.
-  * Terminate unhealthy instances if not dead already.
-  * Launch a new instance.
+## ⚙️ Stateless Recovery
+
+Stateless recovery leverages the existing scalability mechanisms for recovery. Since stateless services don’t store session data locally, they are more flexible in terms of recovery strategies.
+
+### 🔥 Hot Standby
+- **Active redundant instances** are kept up and running.
+- In the event of failure, the system can quickly switch over to the redundant instances with minimal downtime.
+
+### 🛠️ Warm Standby
+- **Bring up new instances** as needed when failure occurs.
+- **Terminate unhealthy instances** that aren’t functioning, and launch a new instance in its place.
 
     [Load Balancer ] ----> 1,2,3, ---> Monitoring and Health check () --> autoscaler -> VM container/image.
 
@@ -361,4 +365,45 @@ Registry/Router/DNS
     instance1
 
  
-      
+Database Recovery - Hot StandBy 
+Master -> Slave 
+Master -> master setup can result to write conflicts so they have very specifc usecase.
+Incase of downtime we want almost no downtime
+No data loss 
+
+    [Client]
+    |
+    |
+    Primary(X)-----------> Secondary
+    Instance-1             Instance-2
+    Then secondary can we switched 
+    can start service updates.
+  Both primary and secondary will be near by so that lag can be reduced.
+  
+proximity needed 
+Slow DB writes 
+
+Database recovery - Warm Standby setup
+  Asynchronous Replication 
+  Catchup before recovery
+  Possibility of lost updates 
+  
+          [Client]
+      |
+      |
+      Primary(X)----Async-------> Secondary
+      Instance-1                  Instance-2
+        Log 1                      Log 2 
+        Then secondary can we switched 
+        can start service updates.
+  
+  High Performance 
+  Disaster Recovery 
+  we use this incase of Disaster recovery, the enitire datacenter can go down thats why we use async.
+
+
+💡 **Key Concepts**:
+- **Hot Standby**: Immediate availability and minimal recovery time.
+- **Warm Standby**: Slower to recover but reduces the cost of running idle instances.
+- **Stateful Failover**: Ensures data is synced between the primary and standby servers to allow seamless failover.  
+  
