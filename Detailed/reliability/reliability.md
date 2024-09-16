@@ -406,4 +406,85 @@ Database recovery - Warm Standby setup
 - **Hot Standby**: Immediate availability and minimal recovery time.
 - **Warm Standby**: Slower to recover but reduces the cost of running idle instances.
 - **Stateful Failover**: Ensures data is synced between the primary and standby servers to allow seamless failover.  
+
+
+
+# 📊 Database Recovery (Cold Recovery)
+- **Based on DB Backups**  
+  - 🏷️ **Cost-Effective**  
+  - 🕒 **Significant Downtime**  
+    - Recovery from backups involves a longer downtime, as the system must be fully restored from the latest backup.
   
+- **DB Corruption**  
+  - Replication does not help when corruption is present because it can propagate the corrupted data.
+  
+- **Recovery Process**  
+  - 📜 **Log Updates**  
+  - 💾 **Backups**  
+    - Regular **checkpoint** systems should be in place to ensure consistent recovery points.
+  - 📥 **Import**  
+    - Import the necessary backup data.  
+  - 🔄 **Apply Updates**  
+    - Replay the transaction log updates to get the database back in sync.
+
+---
+
+# 🌍 High Availability in Large-Scale Systems
+![High Availability](https://github.com/user-attachments/assets/4638cac8-45bd-49ab-99dd-9c0d0e58524e)
+
+### How to Maintain Consistency Across Regions  
+- The challenge is ensuring data consistency across geographically distributed regions.  
+- **Master-Master Replication**: Ensures each region has writable databases and consistent data.  
+- **Synchronous Replication** between nearby data centers (e.g., Mumbai1 and Mumbai2).  
+- **Asynchronous Replication** for geographically distant locations (e.g., between Mumbai and Singapore) due to network latency.
+
+### 🛠️ Failover Best Practices
+- **Failover Automation**  
+  - Automating failover systems ensures rapid recovery without human intervention.
+  
+- **Regular Failover Testing in Production**  
+  - Continuously test your failover mechanism in a live production environment to ensure preparedness.
+
+---
+
+# ⚙️ System Stability
+### Approaches for Severe Load Handling:
+#### 1. **Timeouts**
+   - 🕒 **Client Components**  
+     - **User Interface**  
+     - **Service Clients**  
+   - Timeouts prevent calls from being blocked due to long waits, avoiding cascading failures.
+   - Example:  
+     - `Client --> ServiceA --------------> Service B1(X)`
+
+#### 2. **Retries**  
+   - Retrying for **transient failures** and **system errors**, but **not application errors**.  
+   - 🌀 **Exponential Back-off**  
+   - 🔁 Return `HTTP 503` to let clients decide when to retry.  
+   - Use **Idempotent Tokens** to guarantee at least one request is processed, instead of exactly once.
+
+#### 3. **Circuit Breaker**  
+   - Prevents continuous failures by stopping requests to failing components when failure conditions are met.
+
+![Circuit Breaker](https://github.com/user-attachments/assets/1588a6e1-654e-49bb-8e62-113c49cce60b)
+
+---
+
+# 🚨 Fail Fast & Shed Load
+### **Server Components**
+- **Fail Fast**  
+  - Triggered when a component is unable to process requests.  
+    - 🧪 Validation errors  
+    - ❌ Missing parameters/environment variables  
+    - ⏳ Service timeouts (when circuit breakers are active)  
+  - The component should return an error as soon as possible upon discovering failure.
+  
+- **Shed Load**  
+  - Failing fast due to external load beyond system capabilities.
+    - 💻 **Concurrency Limits**: Control thread counts, connections, and request numbers.  
+    - 🔄 **SLA**: If service level agreements (SLA) are breached, incoming requests should be blocked or rejected.
+  
+- **Back Pressure**  
+  - Apply back pressure by shedding load to slow down clients within system boundaries.
+
+ 
