@@ -104,132 +104,82 @@ Digital certificates provide a **trusted** way of sharing a public key with the 
 - They ensure that **any client** can verify the ownership of the public key.
 
 
-Hashing 
-            for secure communication we do Hashing
+# 🛡️ Hashing and Network Security Concepts
 
- its a algorithm which convert input to hash output
-            
-There are different hashing mechanishm available.
-Hasing is a one-way algorithm
-Generate same output for same text
-Slighteest change in the text changes the hash value drastically .
-two input can also result in hash but it does not happen now. 
+## 🔒 Hashing
+Hashing is used for secure communication by converting input data into a fixed-size hash output. It's a one-way algorithm, meaning:
+- Same input always produces the same output.
+- The slightest change in the input drastically alters the hash value.
+- Hashing ensures data integrity.
 
+### 🚀 Popular Hashing Algorithms:
+- **MD5**: 128 bits
+- **SHA-1**: 160 bits
+- **SHA-2**: 256 and 512 bits
+- **SHA-3**: Latest in the series.
 
-            MD5 - 128 bits
-            SHA=1 - 160 bits
-            SHA=2 - 256.512 bits
-            SHA=3
+## ✍️ Digital Signatures
+Digital signatures ensure **integrity**, **authentication**, and **non-repudiation** of a document.
 
-Digital Signatures - 
-are the way to check intergrity and authentication and non-republication of doucment.
+1. Data Document 📝 → Hash is generated 🔑
+2. The signer uses their **private key** to encrypt the hash.
+3. The recipient uses the signer’s **public key** to verify the message and the hash.
 
-we have Data document ---> hash will be generated --> signer will use public key ----> 
-Verified using public key of signer. 
-Message is hashed independently, and copared with the hash present in the signature.
+## 🌍 Digital Certificates
+A way to share a **public key** with the world in a trusted manner. They ensure any client can verify who the public key owner is.
 
+## 🔗 Chain of Trust
+1. **End-Entity Certificate**: Identifies the owner of the certificate.
+2. **Owner’s Name**: Details of the certificate holder.
+3. **Owner’s Public Key**: Public key of the certificate holder.
+4. **Issuer (CA)**: Certificate Authority that validates the certificate.
 
+## 🌐 Secured Network Channel (SSL/TLS)
+- Certificates and keys are deployed on external load balancers for secure communication.
+- **Why TLS?**: 
+  - TLS ensures encrypted communication over the internet.
+  - Without TLS, data can be viewed and understood by anyone who can access the network.
 
-Digital Certificates - 
-            Way of sharing public key with the world. in a trusted manner
-            * any client should be able to verify who the public key owner is
+### 🛑 Firewalls
+Firewalls act as **filters** to allow or deny network requests:
+- **Ingress Filtering** (incoming traffic):
+  - Source IP, Target IP, Target Port, Protocol (TCP/UDP)
+- **Egress Filtering** (outgoing traffic):
+  - Destination IP, Target IP, Target Port, Protocol
 
+## 🔐 Network Security
+Typical network setup:
+- **DMZ Subnet 1**: Port 443
+- **DMZ Subnet 2**: Port 443 (Internal hosts)
+- **Services Subnet**: Port 8080 (Aggregator service)
+- **Database Subnet**: Port 1522
 
+## 🆔 Identity Management
 
-Chain of trust - 
-            End-entity certificate 
-            Owners name
-            Owners public key 
-            Issurs (CA's)
+### 🔑 Authentication (Who You Are)
+- Proving an identity:
+  - **ID**
+  - **Name**
+  - **Organization**
 
+### 🚦 Authorization (What You Can Do)
+- Proving the right to access specific functions/services.
+- Ensures controlled access to data.
 
+### 🔗 Credential Transfer
+- **HTML Forms**: HTTP Post Method over SSL/TLS.
+- **HTTP Basic**: Base64-encoded credentials transferred over SSL/TLS.
+- **Digest-based**: Hashed password for verification.
+- **Certificate-based**: Uses private-public key pairs for exchange.
 
+## 🔐 Credential Storage & Verification
 
-Secure Network Channel 
-            * Certificate & keys deployed on external load balncer.
-            So we have learned that we can use TLS communication
+### 🗂️ Storage Methods:
+1. **File Storage**: Not scalable.
+2. **Database**: RDBMS or NoSQL databases.
+3. **LDAP**: Lightweight Directory Access Protocol, ideal for high-read environments and enterprise setups.
 
-            over the internet, and that's the right thing to do
-            because once communication is happening over the internet
-            anyone who has the access to the internet,
-            which pretty much anyone can have,
-            can not only view the data, but more importantly
-            can make sense out of it if we are not using TLS.
-            But if we are using TLS,
-            then only the data can be viewed in the encrypted form
-            but nobody can make sense out of that.
-
-            Firewalls - external infrastructure to allow and deny.
-            They are fitler they look for are the request comming from client are allowed or not.
-            Firewall has two functions 
-            1. Ingress
-                        * source IP (Range)
-                        * Target IP (Range)
-                        * Target port 
-                        * protocol -> TCP, UDP
-            2. Egress 
-                        * Destination IP (Range)
-                        * Target IP (Range)
-                        * Target Port 
-                        * Protocol 
-
-Network Security 
-            4 subnets -
-            [DMZ - Subnet 1 ]  [DMZ Subnet 2 ]     [Services Subnet]   [DB Subnet]
-
-             port 443       port443 for internal host
-           {Webapplication}  [aggregator service]   8080(port)         Port 1522
-
-Identity Management 
-   Authentication/ Authorization 
-
-   * Authentication (who you are)
-      * Proving an Identity
-         - ID
-         - Name
-         - Organization
-   * Authorization (what you can do)
-    -  Proving right to acces s function/services
-    -  Data
-
-
-     Creds trasnfer
-     [Chrome]-------------> [Auth Service] ---------------> [LDAP/RDBMS]
-
-Credntials Transfer 
-            HTML Forms
-                        * HTTP post method over SSL/TLS
-            HTTP Basic 
-                        * Based on Chanllange-Response
-                        * HTTP methdhos overs SSL/TLS
-                        * Base 64 encoded <UserId> <Passwords>
-            Digest Based 
-                        * like basic but uses hashed password
-                        * Hash = md5 (username:realm:password)
-            Certificate based 
-                        * private-public keybased certificates exchanges.
-
-        Credential Storage & Verfication 
-                     Two things two store -
-                        User Auth -> ID, Name, Role , Group 
-                        User info -> Org, Address, Contact.
-                        
-         File Storage 
-            * Not scalable 
-         Datebase 
-            * RDBMS 
-            * NoSql 
-         LDAP/Directory Server (Lightweight Directory Access Protocol))
-                     https://www.youtube.com/watch?v=Xp9kLn9vRmw
-            * Architectural 
-              * Hierachical database desinged for reading browsing, searching data.
-              * High scalablity and high performance for read loads.
-            * Enviorment 
-              * Enterprice enviorment with multiple application.
-              * Interoperability with all LDAP clients.
-              * Distributed/Fedration Storage.
-              
-Stateful Authentication 
-            * Limited Scalability due to sessions and centralized authentication 
-            * Sessions can be revoked by removing it from session storage.
-             we will use common cache to store session values. 
+## 💾 Stateful Authentication
+- Session-based, centralized authentication.
+- Sessions can be revoked by removing them from the session storage.
+- Common cache is used to store session values for scalability.
