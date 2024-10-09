@@ -183,3 +183,183 @@ Typical network setup:
 - Session-based, centralized authentication.
 - Sessions can be revoked by removing them from the session storage.
 - Common cache is used to store session values for scalability.
+
+
+
+# Role-Based Access Control (RBAC) 🚀
+
+RBAC is a method to restrict system access to authorized users based on their roles. It simplifies the management of user permissions by associating a role with a set of permissions, which is then assigned to users or user groups. This is commonly used in enterprise applications to enforce fine-grained access control.
+
+### Key Concepts 🔑
+
+- **Identity** 👤
+  - **User ID**: Represents the user in the system.
+  
+- **Identity Group** 👥
+  - **Set of User IDs**: A group that aggregates multiple users for easier management.
+
+- **Permission** ✅
+  - **Allowed Operation**: Defines the specific actions a user can take (e.g., read, write, update).
+
+- **Role** 🎭
+  - **Set of Permissions**: A role bundles a collection of permissions that users in that role can execute.
+
+- **Resource** 🔧
+  - **Service API**: The system or service endpoints that users interact with.
+
+---
+
+## Example Access Control Flow:
+
+```java
+doFilter(request, response) {
+   authHeader;      // Get authorization header from request
+   authToken;       // Extract authentication token
+   auth;            // Validate authentication (OAuth2, API Key, etc.)
+   role;            // Get user's role (Customer, Manager, etc.)
+   resourceMethod;  // Determine the requested resource (e.g., Read Catalog)
+   requiredPermission;  // Identify the permission required (e.g., CATALOG_VIEWER)
+   role.hasPermission(requiredPermission);  // Check if the user's role allows the requested action
+}
+```
+
+Annotations for securing resources:
+```java
+@Secured{Permission.CATALOG_VIEWER}  // Restrict access to users with CATALOG_VIEWER permission
+```
+
+### Example Roles, Permissions, and Users 🧑‍💻
+
+| **Users** | **Groups**  | **Roles**        | **Permissions**         | **Business Resource**  | **System Resource**         |
+|-----------|-------------|------------------|-------------------------|------------------------|-----------------------------|
+| Alice     | Customer    | Customer Role    | Read Catalog             | Order Service           |                             |
+| Carol     | Support     | Support Role     | Read Inventory           | Catalog Service         |                             |
+| Eve       | Inventory   | Manager Role     | CRUD Catalog             | Inventory Service       | Inventory Database          |
+
+---
+
+## Authorization Mechanisms 🔓
+
+### OAuth2 🔑
+OAuth2 is designed for distributed systems, allowing a client to access a protected resource on behalf of a resource owner. 
+
+- **Token Grant**: OAuth2 allows clients to request access tokens for API requests using different types of grants (e.g., Authorization Code, Client Credentials).
+- **Token Types**: 
+  - **Bearer Token**: Widely used for API authentication; whoever possesses this token can access the resource.
+  - **MAC Token**: Message Authentication Code-based token offering a more secure, signature-based method of access.
+- **Token Formats**: 
+  - **JWT (JSON Web Token)**: A compact token format often used for stateless authentication.
+  - **SAML (Security Assertion Markup Language)**: Commonly used in Single Sign-On (SSO) scenarios, especially in enterprises.
+
+### API Key 🔐
+- **Used by server applications** to authenticate requests.
+- **Purpose**: To identify the origin of a request rather than the user making the request.
+- **Validity**: API Keys are often restricted to specific domains or IP addresses.
+- **Limitations**: They do not offer granular user-based control and are more suitable for server-to-server communication.
+
+#### Example Use Case:
+- Google Maps API requires an API key to access its services, but it doesn't care about who the user is—only the origin of the request.
+# OAuth 2.0 Token Grant
+
+### 🧑‍💻 Resource Owner
+   * The **user** who has access to the resources.
+
+### 🌐 User Agent
+   * The user's **HTTP browser** used to access the client.
+
+### 🛠 Client
+   * An **application** that needs access to the user's resources.
+
+### 🛡 Authorization Server
+   * The **identity provider** responsible for authenticating users and issuing access tokens.
+
+### 🗄 Resource Server
+   * **Hosts the user's resources**.
+   * Any client with a valid **access token** can access the user's resources.
+
+---
+
+## 🔑 OAuth Token Types
+
+### 🎫 Bearer Token (Cinema Ticket Analogy)
+   * Anyone who has the token can use it (like a cinema ticket).
+   * Provides **integrity protection** only.
+   * **Requires TLS** for confidentiality.
+   * Supports **refresh tokens** to renew access.
+   * **Expires** after a specified period.
+
+### 🛂 MAC Token (Holder of the Key)
+   * Issued to a specific person, requiring proof of identity (like an airline ticket).
+   * Offers **data origin protection**.
+
+---
+
+## 🔐 JSON Web Tokens (JWT)
+
+### 🔍 What is JWT?
+   * A **JSON-based** token specification.
+   * **Compact** and **URL-safe** for efficient transmission.
+
+### 🧾 JWT Contains:
+   * Information about:
+     * **Subject or Principal** (e.g., the user).
+     * **Issuer** of the token (e.g., the identity provider).
+     * **Timestamp** (when it was issued).
+     * **Validity** period and the **scope** of usage.
+
+### 🛠 JWT Format:
+   * `{Header}.{Payload}.{Signature}`
+     * Signature is created by the identity provider.
+     * Supported algorithms include:
+       * `HS256` -> HMAC with SHA256
+       * `RS256` -> RSA with SHA256
+     * JWT **may or may not** be encrypted.
+
+### 🔄 Alternative to JWT:
+   * **SAML Tokens** (XML-based tokens).
+
+---
+
+## 🔒 Token Storage Best Practices
+
+### 🖥 Web Client
+   * **Browser Cookies**:
+     * Can be made **HTTP-only** (not accessible to JavaScript).
+     * Vulnerable to **CSRF** attacks.
+   * **Browser Local Storage**:
+     * Accessible to JavaScript but vulnerable to **XSS**.
+     * **Should NOT** be used for storing tokens.
+
+### 📱 Single Page Application (SPA)
+   * No **secure** place for storing tokens.
+   * **Local storage** is unsafe.
+   * Authenticate using **username/password** and store tokens **temporarily** in memory.
+
+### 📲 Mobile Application
+   * **iOS** can use **Keychain**, and **Android** can use **Keystore** for secure token storage.
+
+---
+
+## 🔐 Securing Data at Rest
+
+### 🔏 Hashed Passwords
+   * **Protects user passwords** from being leaked in plaintext form.
+
+### 💽 Transparent Data Encryption (TDE)
+   * Encrypts data **on the hard drive**.
+   * **Backups are protected**.
+   * Data can still be viewed through **queries**.
+
+### 🔐 Client Data Encryption
+   * Adds an extra **layer of security**.
+   * **Data cannot be viewed** through queries.
+   * Queries **cannot** be used to filter or directly update encrypted data.
+
+---
+
+**⚠️ Important Considerations**:
+1. Always secure sensitive data with **TLS** during transmission.
+2. Be cautious about storing tokens in client-side storage, as **XSS** and **CSRF** vulnerabilities can expose your tokens.
+3. Use **refresh tokens** wisely to maintain session security.
+
+ 
