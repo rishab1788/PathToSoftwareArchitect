@@ -1,4 +1,3 @@
-
 # 🔑 Symmetric Key
 
 **Limitation**:  
@@ -362,4 +361,22 @@ OAuth2 is designed for distributed systems, allowing a client to access a protec
 2. Be cautious about storing tokens in client-side storage, as **XSS** and **CSRF** vulnerabilities can expose your tokens.
 3. Use **refresh tokens** wisely to maintain session security.
 
- 
+**Common Vulnerabilities 
+
+SQL Injection 
+
+HTTP://abc.com/product?category=Electronice;drop table products;
+
+Select * from product where category='Electronice; drop table products..' and visible=true;
+
+Use precompiled prepared statements which accept parameter only by ? substitute;
+
+
+Cross Site Scripting - XSS 
+java script put into the 
+<img width="1121" alt="image" src="https://github.com/user-attachments/assets/322b5f7d-d696-426a-bd2f-280d4b785745">
+
+
+CSRF - 
+
+<img width="763" alt="image" src="https://github.com/user-attachments/assets/45199487-7423-41a6-9869-da1e72a8f5c5">
