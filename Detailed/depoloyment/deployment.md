@@ -254,4 +254,106 @@ Kubernetes provides the backbone for reliable, scalable, and resilient deploymen
 ---
 
 
-Kuberantes 
+
+# Kubernetes Overview 🚀
+
+## 🛠️ Key Features
+
+### Service Naming & Discovery 🔍
+* Uses **DNS** to enable service discovery.
+
+### Container Lifecycle Management 🔄
+* Manages health checks, restarts, and replacement of unhealthy containers.
+
+### Load Balancing ⚖️
+* Built-in load balancing for distributing traffic across containers.
+
+### Automated Rollouts and Rollbacks 🌀
+* Supports smooth deployments with the ability to roll back if needed.
+
+### Automatic Bin Packing 📦
+* Allows you to specify resource requirements (e.g., CPU, memory) for containers to optimize resource usage.
+
+### Automating Storage Mounting 💾
+* Mounts storage systems of choice automatically.
+
+---
+
+## 🏗️ Kubernetes Network and Pods
+
+### Logical Network 🌐
+* Kubernetes creates its own logical network, ensuring that each pod can communicate with others.
+
+### Example Deployment
+
+```
+VM -> POD1 -> [[WebApp] [LoggingApp]], ipaddress11
+VM -> POD2 -> [[Services] [LoggingApp]], ipaddress12
+VM -> POD3 -> [[DB] [LoggingApp]], ipaddress13
+```
+
+* Each **VM** hosts one or more **Pods**, with at least one Docker container running inside.
+* **Kubernetes** ensures each pod has a unique IP and is part of a logical network.
+
+### Example Kubernetes Deployment 🚀
+
+```plaintext
+[Browser] -> Pod[WebApp] -> Pod[Services] -> Pod[DB]
+               |
+               | -> Pod[WebApp] (scalable)
+```
+
+---
+
+## Kubernetes Architecture 🏗️
+
+### Core Components:
+* **Registry**: Stores container images.
+* **Kubernetes Cluster**: Manages the lifecycle of containers and ensures the desired state is met.
+  * **API Server**: Entry point for commands.
+  * **Controller**: Ensures the system is in the desired state.
+  
+### Steps for Cluster Creation ⚙️
+1. Allocate VMs.
+2. Install **Master** and **Proxy** components.
+3. Create a **Network**.
+
+### Steps for Operation 🎛️
+* Retrieve images from the registry.
+* Start and manage Pods.
+* Update configuration.
+* Handle events and alerts.
+
+![Kubernetes Architecture](https://github.com/user-attachments/assets/8cb19b4d-14c5-4e8f-8427-463cfad88906)
+
+---
+
+## 📦 Deployment Strategies with Kubernetes
+
+### 1. Rolling Update 🔄
+* **When to use**: It’s okay to run old and new versions simultaneously.
+* **How it works**: The new version is rolled out incrementally while replacing old nodes.
+* **Load balancing**: Adds new nodes to the pool while removing old ones.
+
+### 2. Canary Deployment 🐦
+* **How it works**: Expose a small fraction of traffic to the new version.
+* **Benefit**: Confidently roll out the update with no downtime.
+
+### 3. Recreated Deployment 💥
+* **How it works**: The old version is stopped before the new one starts. 
+* **Use case**: Required when the old and new versions cannot run simultaneously.
+* **Impact**: Involves a downtime.
+
+### 4. Blue-Green Deployment 🔄💚💙
+* **How it works**: The entire environment is switched to a new one using a reverse proxy.
+* **Benefit**: Quick rollback to the old environment if needed.
+* **Trade-off**: Avoids downtime but requires extra hardware.
+
+### 5. A/B Testing ⚖️
+* **Similar to**: Canary release but tracks user behavior across two variants.
+* **How it works**: User requests are split between the two versions.
+* **Benefit**: Compares feature usage and behavior.
+* **Implementation**: Uses feature flags, smart logic, or switches.
+
+
+  
