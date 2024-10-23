@@ -18,112 +18,186 @@ Refrence System
 <img width="1158" alt="image" src="https://github.com/user-attachments/assets/53bea21a-6eef-424a-b4a6-717f5aeafb3e">
 build the system. functionallity of the product 
 
+# Web Applications Overview 🌐
 
-Web Applications - (Frontend Systems.) DB gets less load.
-Request load every request to frontend and may or may not be sent to DB.
+## Frontend Systems (DB Gets Less Load) ⚡
+- **Request Load**: Every request to the frontend may or may not be sent to the database.
+- **Solutions for Web Applications**:
+  - **Static Content** 🖼️
+    - Apache Web Server 🏗️
+    - Nginx Web Server 💡
+    - Cloud Storage ☁️
+  - **Dynamic Content** 🔄
+    - Web Server: Apache HTTPD, NodeJS 🌍
+    - Java Web Container: Tomcat, Jetty, Spring Boot ☕
+  - **Content Caching** 🧊
+    - Nginx 🔁
+  - **Content Distribution** 🌍
+    - CDN (Content Delivery Network)
 
-Solutions for WebApplications - 
-* Static Content
-    * Apache Web Server
-    * Nginx web server
-    * Cloud storage
-* Dynamic Content
-    * Web server - apache HTTPD, NodeJS
-    * Java Web Container - Tomcat, Jettey, Spring-boot
-* Content Caching
-    * Ngnix
-* Content Distribuition
-    * CDN
+---
 
-Apache WebServer - 
-   * Store Static Content - (cache in RAM Disk take alot of time)
-     * HTML/CSS/JS files 
-     * Images Files 
-     * Documents
-   * Genreate Dynmiac Content - php, scripts - apahce will fetch data from page
-      * Get Data & gennerate pages 
-      * PHP, python, perl
-      * No JSP/Servlets
-   * Act As a reverse proxy - not great
+## Apache Web Server 🏗️
 
-  Apache Webserver Architecture - Request Response model
-  <img width="1167" alt="image" src="https://github.com/user-attachments/assets/df22375c-b41b-4e4d-a531-489a16edbd3c">
-
-apache as webserver (CPU Bound)
-
-      [Webserver]
-LB -> [Webserver]
-      [Webserver]
-
-
-
-NGNIX Webserver - 
-   Store Static Content
-      * HTML/CSS/JS files 
-      * Images Files 
-      * Documents
-    Generate Dynamic Content - Not the best
-    Act as REverce Proxy -
-    Really well
-
-   NGING Architecture - event-driven
-
-<img width="1167" alt="image" src="https://github.com/user-attachments/assets/f82400d1-c3f3-4d74-9d9e-4d2183269936">
-
-one single thread T1 -> only one 1 million connection handling is done.
-Reverse proxy - 
-
-WebContainers (complex logic, servlet logic, ) & Spring Framework 
-Tomcat and jetty - Servlet engineer
-Applocation Servers -
-wildfly]/Jboss 
-Sprint boot 
-* runs embedded web container - tomcat, jetty
+- **Handles Static Content** 🖼️:
+  - HTML/CSS/JS files 🖥️
+  - Image Files 🖼️
+  - Documents 📄
   
-MVC architecture 
-* Servlets for logic
-* JSP for presentation
+- **Generates Dynamic Content** 🔄:
+  - Supports PHP, Python, Perl 🐍
+  - Fetches data from the page and generates content
+  - Does not support JSP/Servlets ❌
 
-Spring Containers 
-*Runs inside a web container
-* provides
-     * IOC/DI
-        * For business logic 
-     * MODEL view controller
-       * For frontends
-     * JDBC TEMPLATE
-        * For accessing DB
-     * Connection pools
-        * HTTP, DB
+- **Acts as Reverse Proxy (but not the best option)** 🚫
+  
+### Architecture (Request-Response Model) 🔄
 
-Web server
-Jetty is also a web server. It can be used to monitor a network, server, storage, cloud, containers, and more.     
+![Apache Architecture](https://github.com/user-attachments/assets/df22375c-b41b-4e4d-a531-489a16edbd3c)
 
-Jetty & Spring                         webapp 
-                                 [JETTY/spring]
-[Webbrowser] ----> [NGNIX] --->  [JETTY/spring]  
-                                 [JETTY/spring]   
+---
 
-Node.Js
-   * HTTP Server
-   * uses javascript engine to process requests
-   * Highly efficient at handling a large number of connections
-     * For requests that are IO-bound (very less time either making DB or file operations) and not CPU-bound
-     * Single thread to handle all connections
-          * Saves memory
-          * Avoids context switching
+## Nginx Web Server 💡
 
-<img width="1167" alt="image" src="https://github.com/user-attachments/assets/e46e3f49-725a-42ee-a0b9-a85f00cb9a74">
+- **Handles Static Content** 🖼️:
+  - HTML/CSS/JS files 🖥️
+  - Images 🖼️
+  - Documents 📄
+  
+- **Generates Dynamic Content** (not the best at it) ❌
 
-node.js never vacant the CPU it continues to run it with a single thread.
-Poll IO
+- **Acts as a Reverse Proxy (performs exceptionally well)** 🔀
 
-For incoming network calls, we always make an async way.
+### Event-Driven Architecture 🧠
+- Handles **1 million connections** with a single thread.
 
-Cloud Solution for Web - 
-Manged Services - 
-   * Hardened Solutions
-   * Automated deployment
-   * Built-in Scalability & reliability
-   * Global deployment solutions
+![Nginx Architecture](https://github.com/user-attachments/assets/f82400d1-c3f3-4d74-9d9e-4d2183269936)
 
+---
+
+## Web Containers 🛠️
+
+- **Tomcat/Jetty** for Servlets and Spring-based applications ⚙️
+- **Application Servers**: Wildfly/JBoss 🖥️
+- **Spring Boot** embeds web containers like Tomcat/Jetty 🌱
+
+### MVC Architecture:
+- **Servlets** for logic ⚙️
+- **JSP** for presentation 🎨
+
+### Spring Framework 🖥️
+- **IOC/DI**: For business logic 🧠
+- **MVC**: For frontend and service logic 🎨
+- **JDBC Template**: For database access 💾
+- **Connection Pools**: HTTP and DB connections 🔗
+
+---
+
+## Node.js 🚀
+
+- **Efficient HTTP Server** powered by JavaScript engine ⚡
+- Ideal for **IO-bound** tasks (DB or file operations) 🗃️
+- Single-threaded architecture 🧵, handles multiple connections.
+
+![Node.js Architecture](https://github.com/user-attachments/assets/e46e3f49-725a-42ee-a0b9-a85f00cb9a74)
+
+---
+
+## Cloud Solutions for Web ☁️
+
+### Managed Services 🛠️
+- **Hardened Solutions** 🔐
+- **Automated Deployment** 🤖
+- **Built-in Scalability & Reliability** ⚙️
+- **Global Deployment** 🌍
+
+### Cloud Storage 💾
+- **Unlimited Disk Space** 📂
+- **Version Control** 📑
+- **Access Control** 🛡️
+- **Low Latency** ⚡
+- **High Availability & Reliability** 🔄
+- **Static Website Creation** 🏗️
+
+### Cloud CDN (Content Delivery Network) 🌍
+- **Low Latency** for cache hits ⚡
+- **Persistent Connections** for cache misses 🔁
+- **Reduces Backend Load** 🧑‍💻
+
+---
+
+## Service Layers & Caching 🧊
+
+- **Business Logic in Services** 🛠️
+- **Web Containers**: REST and Spring-based containers ⚙️
+- **Object Caching**: Memcached & Redis 🗃️
+- **Async Messaging**: Redis, RabbitMQ, Kafka 📬
+- **Service Mesh**: Netflix, Istio 📡
+
+---
+
+## Memcached 🧊
+
+- **Key-Value Store** for fast access ⚡
+- **Values**: Any size (preferred < 1MB), configurable max size 📦
+- **Sub-millisecond Latency** ⚡
+- **Horizontally Scalable** ↔️
+- **Cache-Aside Pattern** 🛠️
+  
+  **Architecture**: 
+
+  ![Memcached Architecture](https://github.com/user-attachments/assets/69a39ef3-96de-4d34-bf72-10e6a1243213)
+
+**Biggest Drawback**: Data is lost if a node crashes or is restarted 🚨
+
+---
+
+## Redis Cache 🗃️
+
+- **Key-Value & Data Structures Store** 🗂️:
+  - Supports Strings, Lists, Sorted Sets, Maps, etc.
+  
+- **Persistent Store**:
+  - Stores data on disk 💾
+  - Backup & restore capabilities 📂
+  
+- **Data Replication**:
+  - Asynchronous & synchronous options 🔁
+  
+- **Messaging Queue** capabilities 📬
+
+  **Architecture**:
+
+  ![Redis Architecture](https://github.com/user-attachments/assets/e52206c8-0c22-4dbb-b27a-80d307fcc513)
+
+### Cloud Caching Solutions ☁️
+- **AWS ElastiCache**:
+  - Supports Memcached & Redis 🗄️
+- **Google Memorystore**:
+  - Fully managed Redis or Memcached ⚡
+  
+- **Features**:
+  - Sub-millisecond latency ⚡
+  - Scalable up to 5TB 📊
+  - High availability (99.9%) 💡
+
+---
+
+## RabbitMQ 📬
+
+- **Messaging Queue** for async communication between services 📨
+- **Supports Multiple Patterns**:
+  1. One-to-one messaging 📤
+  2. One-to-many messaging 📥
+  3. Pull-based messaging ↔️
+
+### Design Goals:
+- **At Least Once Delivery** 📩
+- **Message Sequencing (FIFO)** ⏳
+- **Interface & Consumer Decoupling** ✂️
+- **Message Rate Decoupling** 🔄
+
+### Use Cases:
+- **Service Integration** 🔄
+- **Message Buffer** 📦
+ 
