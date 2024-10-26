@@ -256,3 +256,73 @@ Each system has unique strengths suited to specific scenarios:
 - **Redis Pub/Sub** 🔥: Best for transient, high-speed message updates without persistence.
 <img width="1036" alt="image" src="https://github.com/user-attachments/assets/57c6860d-629f-47b7-8e6b-615c6922c4f6">
 
+
+# 📚 Datastores & Databases
+
+Datastores and databases are fundamental to managing data in software systems, especially in supporting **simultaneous read and modification** operations. Below is a breakdown of common datastore solutions and architectures.
+
+---
+
+## 🗄️ Datastore Solutions
+
+**1. Relational Databases (RDBMS):**
+   - Examples: Oracle, SQL Server
+   - Typically designed for **general-purpose data management** in applications with a structured data model. Ideal for scenarios where **ACID transactions** are necessary for maintaining data integrity.
+
+**2. Distributed Databases:**
+   - Examples include **Key-Value, Column-Family,** and **Document-Oriented Databases** for handling large volumes of unstructured or semi-structured data.
+   - They offer high **scalability** and **flexibility** compared to RDBMS, making them ideal for **Big Data** and cloud environments.
+
+   - **Key-Value Stores (e.g., DynamoDB)**: Optimal for quick reads and writes of individual values.
+   - **Column Family (e.g., Cassandra, HBase)**: Ideal for distributed storage of large datasets across clusters.
+   - **Document-Oriented (e.g., MongoDB)**: Flexible schema, great for applications with diverse data structures.
+
+---
+
+## 🏛️ Relational Databases (RDBMS) Overview
+
+RDBMS solutions serve as the backbone for traditional data needs, accommodating up to **1-5TB** of data and supporting up to **10k connections** in single-node deployments. They are ideal when **specific functional requirements** demand strong consistency and structured relationships between data points.
+
+### ✨ Key Features
+- **ACID Transactions**: Ensures data reliability during complex updates across multiple tables.
+- **Data Consistency**: Guarantees consistent data views across all readers.
+- **Fixed Schema**: A well-defined schema supports efficient filtering, joining, and querying across rows and tables.
+- **Normalized Data**: Data is stored in a normalized format to save storage space and improve data integrity.
+
+### 🚧 RDBMS Limitations
+- **Manual Schema Modifications**: Adding or removing fields/tables requires **manual intervention** and schema migrations, which can disrupt the application.
+- **Tight Coupling**: Schema modifications often require changes to the application, creating a tightly coupled system.
+- **Join Dependence**: Extensive use of joins can slow down performance.
+- **Limited Horizontal Scalability**: While RDBMS can scale **vertically**, horizontal scaling requires more complexity and often results in eventual consistency.
+
+---
+
+## 🔍 RDBMS Scalability Architecture
+
+For handling scalability challenges, RDBMS solutions often utilize **vertical scaling** and **partitioning**:
+
+1. **Vertical Scaling (Scaling Up)**: Adding more CPU, RAM, and storage to a single database server.
+2. **Partitioning**: Dividing the database into **multiple nodes** based on specific functions (e.g., separate nodes for order services).
+3. **Read Replicas**: Replicating data to enhance read performance and improve fault tolerance.
+
+While effective, these methods have trade-offs:
+   - **Microservices Architecture Challenges**: RDBMS-based services may require **eventual consistency** due to difficulties in achieving ACID transactions across microservices.
+   - **Manual Sharding**: Ensuring data distribution across nodes involves **manual sharding** which can complicate operations.
+
+---
+
+## 🆚 Comparing RDBMS with NoSQL
+
+While RDBMSs are ideal for structured data with predictable schema changes, NoSQL databases like **key-value, document-oriented,** and **column-family stores** excel in handling **unstructured** data with **flexible schemas**.
+
+### ⚖️ RDBMS vs. NoSQL
+- **Data Flexibility**: NoSQL databases allow for schema-less data management, making it easier to evolve application requirements without tight coupling.
+- **Performance**: RDBMS writes typically involve **overwrites** with each update, while some NoSQL databases use **timestamped rows** for version control.
+- **Disk Usage**: RDBMS primarily aims to be storage efficient through normalization, whereas NoSQL databases often trade storage efficiency for flexibility and speed.
+
+--- 
+
+## 💡 Key Takeaways
+
+- **RDBMS**: Best for applications needing **structured data** with strict consistency and ACID transactions.
+- **NoSQL**: Suitable for **scalable applications** needing high-throughput, distributed, and flexible data management, such as Big Data applications.
