@@ -314,15 +314,48 @@ While effective, these methods have trade-offs:
 ## 🆚 Comparing RDBMS with NoSQL
 
 While RDBMSs are ideal for structured data with predictable schema changes, NoSQL databases like **key-value, document-oriented,** and **column-family stores** excel in handling **unstructured** data with **flexible schemas**.
+ 
+Oracle rack the Shared-noting architecture, its pretty costly.
 
-### ⚖️ RDBMS vs. NoSQL
-- **Data Flexibility**: NoSQL databases allow for schema-less data management, making it easier to evolve application requirements without tight coupling.
-- **Performance**: RDBMS writes typically involve **overwrites** with each update, while some NoSQL databases use **timestamped rows** for version control.
-- **Disk Usage**: RDBMS primarily aims to be storage efficient through normalization, whereas NoSQL databases often trade storage efficiency for flexibility and speed.
+<img width="1051" alt="image" src="https://github.com/user-attachments/assets/99691c65-633d-43ce-9b88-3e243b0128e3">
 
---- 
+## 🗝️ Amazon DynamoDB
+Amazon DynamoDB is a highly scalable and available key-value datastore, ideal for applications needing fast, reliable data access at scale.
 
-## 💡 Key Takeaways
+- **Structure**: Tables are organized as hash maps.
+  - **🌐 Persistent & Distributed**: Ensures data durability and availability across nodes.
 
-- **RDBMS**: Best for applications needing **structured data** with strict consistency and ACID transactions.
-- **NoSQL**: Suitable for **scalable applications** needing high-throughput, distributed, and flexible data management, such as Big Data applications.
+- **🚀 API Operations**: 
+  - Provides full CRUD capabilities with `PUT`, `GET`, `UPDATE`, `DELETE`, and `QUERY` options.
+
+- **🔑 Index Key Design**: 
+  - **Partition Key**: 
+    - Single-attribute key used for hashing to determine the data partition.
+  - **Sort Key**:
+    - Defines item order within a partition.
+    - Allows range queries (e.g., `<`, `>` operators).
+  - **🛡️ Atomic R/W Operations**: Ensures data consistency with atomic operations on a single key.
+
+- **⚙️ DynamoDB Architecture**  
+  <img width="1146" alt="DynamoDB Architecture" src="https://github.com/user-attachments/assets/c1ca1b98-679f-49a7-9687-ade096e66954">
+
+---
+
+## 📈 Google Bigtable & Apache HBase
+Google Bigtable and Apache HBase use a **column-family storage model**, optimized for analytical workloads with extensive, scalable data needs.
+
+- **🔧 Data Structure**: 
+  - Organizes data within a **tree map** in sorted order for fast access.
+  - **🧩 Sparse Storage**: Efficiently stores sparse tables with millions of empty columns, focusing only on populated cells.
+
+- **⚡ Core Characteristics**: 
+  - **Persistent & Distributed**: Ensures reliability and high availability.
+  - **Column Families (CF)**:
+    - Compressed to conserve space.
+    - Support unlimited columns.
+  - **🔐 Atomic R/W Operations**: Guarantees consistency for operations on a single key.
+  - **⏳ Timestamp Versioning**: Maintains a historical record for each key, enabling versioning.
+
+- **Bigtable Architecture**  
+  <img width="1128" alt="Bigtable Architecture" src="https://github.com/user-attachments/assets/f55ad2cc-24e2-4fb1-9dc4-075c70c428cf">
+
