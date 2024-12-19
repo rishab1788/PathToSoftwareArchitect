@@ -1,0 +1,90 @@
+# Amazon EBS and EFS Overview
+
+## **Elastic Block Store (EBS)**
+
+### **What is EBS?**
+- A **network drive** you can attach to your EC2 instances while they run.
+- **Persists data** even after instance termination.
+- Can only be mounted to **one instance at a time**.
+- Bound to a specific **availability zone (AZ)**.
+- **Network drive** (not a physical drive) that can be detached and moved via snapshots.
+
+### **Key Features**
+- **Provisioned Capacity**: 
+  - Size in GiBs and IOPS.
+- Locked to an AZ but can be replicated using snapshots.
+- Examples:
+  - `[ US-EAST-1A ]`
+
+### **EBS Snapshots**
+- Serve as **backups** for EBS volumes.
+- Can be copied to different availability zones.
+- **Fast Snapshot Restore (FSR)**: Forces full initialization of a snapshot for quicker restores.
+
+### **Volume Types**
+1. **GP2/GP3 (SSD)**:
+   - GP3: Baseline of 3000 IOPS and throughput of 125 MiB/s.
+   - GP2: Small volumes can burst IOPS to 3000.
+2. **io1/io2 (SSD)**: High-performance SSD.
+3. **st1 (HDD)**: Low-cost HDD.
+4. **sc1 (HDD)**: Lowest cost for infrequent access.
+
+### **Multi-Attach**
+- **io2 Family** supports attaching the same EBS volume to multiple EC2 instances in the same AZ.
+
+### **EBS Encryption**
+- **Encrypted EBS Volume** provides:
+  - Data at rest encryption inside the volume.
+  - Encrypted data in transit between the instance and volume.
+  - Encrypted snapshots.
+
+---
+
+## **Amazon Machine Images (AMI)**
+
+### **Overview**
+- **AMI** is a customization of an EC2 instance.
+- Includes your own software configuration and OS.
+- Built for a specific region.
+
+### **Types of AMIs**
+1. **Public AMI**: Provided by AWS.
+2. **Your Own AMI**: Custom-built and maintained.
+3. **Marketplace AMI**: Third-party AMI (can be purchased).
+
+### **AMI Process**
+- Create an AMI from an EC2 instance.
+- Use the AMI to launch new instances.
+
+---
+
+## **EC2 Instance Store**
+
+### **What is EC2 Instance Store?**
+- High-performance hardware disks attached to an EC2 instance.
+- **Data is lost if the instance stops**.
+- Ideal for:
+  - Buffers, caches, scratch data, or temporary content.
+- **Risk**: Data loss if hardware fails.
+
+### **Comparison with EBS**
+- EBS volumes are network drives with good but limited performance.
+- EC2 Instance Store provides better IOPS performance but lacks persistence.
+
+---
+
+## **Amazon EFS (Elastic File System)**
+
+### **Overview**
+- Managed **Network File System (NFS)** for EC2 instances.
+- **Multi-AZ support**.
+- Highly available, scalable, and **expensive (3x GP2)**.
+- Pay-per-use model.
+
+### **Features**
+- **No pre-defined storage** required.
+- Scales automatically to petabyte levels.
+- Can be mounted on many EC2 instances.
+
+---
+
