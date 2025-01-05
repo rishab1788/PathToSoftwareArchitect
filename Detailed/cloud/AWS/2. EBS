@@ -37,7 +37,7 @@
   - Data at rest encryption inside the volume.
   - Encrypted data in transit between the instance and volume.
   - Encrypted snapshots.
-
+a
 ---
 
 ## **Amazon Machine Images (AMI)**
@@ -88,3 +88,16 @@
 
 ---
 
+
+
+EBS vs EFS - Elastic File System
+- Mounting 100s of instances across AZ
+- EFS shares webiste files (Wordpress)
+- Only for Linux instances(POSIX) POSIX, or Portable Operating System Interface, is a set of standards that define how operating systems should interact with application
+- EFS has a higher price point than EBS
+Can leverage storage tiers for cost savings
+
+
+EC2 Instance Store provides the best disk I/O performance.
+
+u can run a database on an EC2 instance that uses an Instance Store, but you'll have a problem that the data will be lost if the EC2 instance is stopped (it can be restarted without problems). One solution is that you can set up a replication mechanism on another EC2 instance with an Instance Store to have a standby copy. Another solution is to set up backup mechanisms for your data. It's all up to you how you want to set up your architecture to validate your requirements. In this use case, it's around IOPS, so we have to choose an EC2 Instance Store.
