@@ -115,3 +115,33 @@ Services & Ingress
 <img width="1374" alt="image" src="https://github.com/user-attachments/assets/544473cc-1ad0-4be0-af47-a82cdae01fd9" />
 
 <img width="1344" alt="image" src="https://github.com/user-attachments/assets/79cabfee-535f-4fdb-a822-127b7f79bc66" />
+
+Running a cluster 
+
+Cloud - 
+  EKS - Managed AWS kubernates - unmanages nodes, managesd nodes and fargate profiles 
+  AKS - manages azure 
+  GKE - 
+Local --
+  - Docker Desktop
+  - - Minikube
+    - K3s
+
+
+  Running a cluster - Docker Desktop 
+    Install Docker Desktop 
+    Enable Kubernates support under System prefrences
+
+Interacting with a cluster - 
+KubeCtl - CLI tghat lets you interact with clusters 
+
+- Looks at $Home/.kube/config, KUBECONFIG environment variable or --kube
+
+Genral commnads -
+<img width="645" alt="image" src="https://github.com/user-attachments/assets/b49c8635-89c9-4229-aba3-34fe4e9d3152" />
+
+
+<img width="922" alt="image" src="https://github.com/user-attachments/assets/8f00e9fd-71a0-48bc-a528-13cdb3ca4448" />
+
+
+<img width="352" alt="image" src="https://github.com/user-attachments/assets/30bf160d-f547-4ade-ab53-726789e3ae85" />
