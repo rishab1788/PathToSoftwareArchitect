@@ -145,3 +145,129 @@ Genral commnads -
 
 
 <img width="352" alt="image" src="https://github.com/user-attachments/assets/30bf160d-f547-4ade-ab53-726789e3ae85" />
+
+
+
+Services - 
+
+K8s Service allows us to expose a pod oir set of pods as a single endpoint 
+BNoth a Rest oobject and an abstraction that defines: 
+  - Set of pods
+  - Policy to access them.
+Services keep tracks of the changes in IP address and DNS names - expose as a single object.
+- Different types of backends:
+  Native K8s applications - endpoint API is udpated wherener thre are hcanges - uses selector
+  Non-native K8s application -virtual IP bridge or load balcner to direct traffice to baceknd.
+
+4 types of services - 
+  Cluster IP /Headless
+  NodePort
+  Load balancer
+  External Name
+
+Selector - App - AAPA
+Services : 
+
+1. Cluster IP 
+- Defauilt service type with an IP that things access
+- Load Balances between backend services
+
+2. Headless 
+- Used when load balancing and service IP are not required
+- Creates list of A records - kube-proxyu will ignore them
+
+3. NodePort 
+- Exposes the service on an IP of the node with a static port
+- Cluster IP is created to help with routing
+- Connect at <NodeIP>:<NodePort>
+
+4. Load Balancer -
+ _ Exposing cluster to the internet
+ - Will create A LB in AWS.
+
+ 5. External name
+      - Lets you map external services to k8S service name
+
+DNS in Kubernates 
+  Kubernates DNS  < 1.11 kube dns , > 1.11 coredns 
+  Both implementaiton work in simmilar matter 
+  - Service named kube-dns w/one or more pods.
+  - Kube-dns serivce listen for service and endpoint events from k8s API and then records.
+  - Kubelet sets /etc/resolv.conf nameserver, search and options setting
+  An a record of a kubernatesd service looks like -
+    server.namesspace.svc.cluster.local
+
+Kube-dns 
+ - 3 contianrs in a pod.
+ - KubeDNS - skydns contianer that perform DNS resoluition
+ - DnsMasq - cahce 
+ - Sidecar - handle metrics
+
+DNS In kubernates 
+
+<img width="641" alt="image" src="https://github.com/user-attachments/assets/bc0b6038-0ae7-4f3c-83f6-f096877afc6d" />
+
+
+Readiness & Liveness Check 
+- Liveness : probes that determines if your  app is dead or alive - if dead k8s removes the starts a replacement
+- Readiness - Probles desinge to deremine if your application to service traffice - allow service to send traffic
+- Actions are performed by kubelet.
+- Probes:
+  - HTTP
+  - Command
+  - TCP
+
+1. Liveness Probe
+Checks if a container is still running and responsive.
+If the liveness probe fails, Kubernetes kills and restarts the container.
+Useful for detecting stuck or unresponsive applications.
+Example: Liveness Probe
+Here, the probe checks if the application responds on port 8080. If it fails, Kubernetes restarts the container.
+
+yaml
+Copy
+Edit
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 8080
+  initialDelaySeconds: 3  # Wait before first check
+  periodSeconds: 5        # Check every 5 seconds
+  failureThreshold: 3     # Restart container after 3 failures
+Use Case:
+
+A web server stuck in an infinite loop can be detected and restarted.
+
+
+Readiness Probe
+Checks if a container is ready to accept traffic.
+If it fails, the pod is removed from service endpoints until it recovers.
+Prevents sending traffic to an unready application.
+Example: Readiness Probe
+Here, the probe ensures the app is ready to handle traffic before adding it to the load balancer.
+
+yaml
+Copy
+Edit
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5  # Wait before first check
+  periodSeconds: 10       # Check every 10 seconds
+Use Case:
+
+A database-dependent service should not receive traffic until it successfully connects to the database.
+
+Service Discovery -
+ Leverages service model in combination with readiness/liveness checks 
+ Server-side discovery
+   - Simmilar to traditional load balancer - AWS NLB
+   - Levragfe clusterIP and K8S Balances
+Service-side discvery
+  Headlerss services - application makes choice
+Need to decide on best model for your service
+  - keep in mid K8s Load Balancer arennt very smart - round robin
+
+
+
