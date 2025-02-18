@@ -269,5 +269,4 @@ Service-side discvery
 Need to decide on best model for your service
   - keep in mid K8s Load Balancer arennt very smart - round robin
 
-
-
+ 
