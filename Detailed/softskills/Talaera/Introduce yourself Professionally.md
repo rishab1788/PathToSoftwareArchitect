@@ -32,4 +32,13 @@ Focus on results
   Don’t focus on tasks, focus on results. Talk about how you help people and be specific. Connect your role to the broader goals of your team or company.
      My role is all about driving brand awareness and increasing sales. By crafting strategic marketing campaigns and closely collaborating with sales, I've helped our company grow its customer base by 25% over the past year.
 
- 
+ Describe your role and responsibility - 
+
+ What will you learn? 
+ - Ask and respond
+
+ - 
+
+
+
+
