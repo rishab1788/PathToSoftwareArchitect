@@ -34,11 +34,26 @@ Focus on results
 
  Describe your role and responsibility - 
 
- What will you learn? 
- - Ask and respond
+ 
+In this lesson, you will learn how to:
 
- - 
+Ask and respond to questions about your job.
+Use key expressions to speak about your job. 
+Use common verbs to talk about your job responsibilities.
 
 
+What do you do?  (This is the most common way to ask!)
+What's your job?  
+What do you do for a living? = What is your job/profession? 
+What do you do for work? 
+What's your job title?
+Where do you work?
+
+I'm a software engineer. 
+I work as an accountant.
+My primary role is to teach clients how to use our software.
+I work at Talaera.
+I work for Talaera.
+I work in New York City.
 
 
